@@ -1,7 +1,7 @@
 const path = require('path')
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 const webpack = require('webpack')
-// const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const nodeExternals = require('webpack-node-externals')
 
 module.exports = {
@@ -23,6 +23,14 @@ module.exports = {
   devtool: '#source-map',
   module: {
     rules: [
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader'
+      },
+      {
+        test: /\.css$/,
+        loader: 'style-loader!css-loader'
+      },
       {
         test: /\.(scss|css)$/,
         use: [
@@ -58,7 +66,7 @@ module.exports = {
     ]
   },
   plugins: [
-    // new VueLoaderPlugin(),
+    new VueLoaderPlugin(),
     new webpack.LoaderOptionsPlugin({
       minimize: true
     }),
