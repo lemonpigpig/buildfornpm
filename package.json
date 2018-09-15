@@ -18,6 +18,7 @@
   "email": "panda.li@boqii.com",
   "license": "ISC",
   "devDependencies": {
+    "autoprefixer": "^9.1.5",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.6",
@@ -48,6 +49,9 @@
     "flow-bin": "^0.77.0",
     "node-sass": "^4.9.3",
     "ora": "^2.1.0",
+    "postcss-import": "^11.0.0",
+    "postcss-loader": "^2.0.8",
+    "postcss-url": "^7.2.1",
     "prettier": "^1.14.2",
     "progress-bar-webpack-plugin": "^1.11.0",
     "sass-loader": "^7.1.0",
@@ -56,6 +60,7 @@
     "url-loader": "^1.0.1",
     "vue": "^2.5.17",
     "vue-loader": "^15.3.0",
+    "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.5.17",
     "webpack": "^4.16.5",
     "webpack-node-externals": "^1.7.2"

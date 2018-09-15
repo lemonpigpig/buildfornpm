@@ -1,8 +1,10 @@
 const path = require('path')
+const utils = require('./utils')
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 const webpack = require('webpack')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const nodeExternals = require('webpack-node-externals')
+var vueLoaderConfig = require('./vue-loader.conf')
 
 module.exports = {
   mode: 'production',
@@ -23,33 +25,10 @@ module.exports = {
   devtool: '#source-map',
   module: {
     rules: [
+      ...utils.styleLoaders({ sourceMap: true, usePostCSS: true }),
       {
         test: /\.vue$/,
         loader: 'vue-loader'
-      },
-      {
-        test: /\.css$/,
-        loader: 'style-loader!css-loader'
-      },
-      {
-        test: /\.(scss|css)$/,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              modules: true,
-              localIdentName: '[name]-[local]--[hash:base64:5]'
-            }
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              modules: true,
-              localIdentName: '[name]-[local]--[hash:base64:5]'
-            }
-          }
-        ]
       },
       {
         test: /\.js$/,
