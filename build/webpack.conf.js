@@ -4,16 +4,15 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 const webpack = require('webpack')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const nodeExternals = require('webpack-node-externals')
-var vueLoaderConfig = require('./vue-loader.conf')
 
 module.exports = {
   mode: 'production',
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, '../dist'),
-    filename: 'template.main.js',
+    filename: 'index.js',
     libraryTarget: 'umd', // 采用通用模块定义
-    library: 'template', // 库名称
+    library: 'index', // 库名称
     libraryExport: 'default', // 兼容 ES6(ES2015) 的模块系统、CommonJS 和 AMD 模块规范
     umdNamedDefine: true,
     globalObject: 'this' // 兼容node和浏览器运行，避免window is not undefined情况
@@ -25,7 +24,10 @@ module.exports = {
   devtool: '#source-map',
   module: {
     rules: [
-      ...utils.styleLoaders({ sourceMap: true, usePostCSS: true }),
+      ...utils.styleLoaders({
+        sourceMap: true,
+        usePostCSS: true
+      }),
       {
         test: /\.vue$/,
         loader: 'vue-loader'
